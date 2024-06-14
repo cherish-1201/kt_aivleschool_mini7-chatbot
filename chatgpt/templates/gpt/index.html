@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with AI</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gpt/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <a href="{% url 'chatgpt:new_chat' %}" class="newchatbutton" id="newChat">새 창</a>
+            <div class="conversation-history" id="conversationHistory">
+                {% for conv in conversations %}
+                    <div class="conversation-entry" onclick="location.href='{% url 'chatgpt:load_chat' conv.id %}'">
+                        {{ conv.first_question }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="chat-container">
+            {% if user.is_authenticated %}
+                <div class="chat-header">
+                    <a href="{% url 'chatgpt:logout' %}" class="logout-button">Logout</a>
+                </div>
+                <div class="chat-box" id="chat-box">
+                    {% for message in messages %}
+                        <div class="message {% if message.sender == 'you' %}you{% else %}them{% endif %}">
+                            <div class="bubble">{{ message.text }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <form action="{% url 'chatgpt:chat' %}" method="post" enctype="application/x-www-form-urlencoded" class="chat-input" id="chat-form">
+                    {% csrf_token %}
+                    <textarea id="question" name="question" placeholder="Type your message here..."></textarea>
+                    <button id="text-button" type="submit">Send</button>
+                </form>
+            {% else %}
+                <p>You need to <a href="{% url 'chatgpt:login' %}">login</a> to chat.</p>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        document.getElementById('question').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('chat-form').submit();
+            }
+        });
+        const chatBox = document.getElementById('chat-box');
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        function loadConversation(id) {
+            window.location.href = `/chatgpt/load_chat/${id}/`;
+        }
+    </script>
+</body>
+</html>

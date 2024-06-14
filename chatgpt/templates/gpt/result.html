@@ -1,0 +1,51 @@
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'gtp/style.css' %}">
+{% endblock %}
+<form action="chat" method="post" entype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+    <div id="file-module-0">
+        <label>chatgtp에게 요청하기기기</label>
+        <textarea id="question" name="question">{{question}}</textarea>
+    </div>
+    <div>
+      <label>응답</label>
+      <span id="result">{{result}}</span>
+  </div>
+    <div><button id="text-button" type="submit" >질문</button></div>
+</form> 
+
+
+{% comment %} {% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'gtp/style.css' %}">
+{% endblock %}
+<form action="chat" method="post" entype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'gtp/style.css' %}">
+    <title>gpt에게 질문하기</title>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-box">
+            {% for message in conversation %}
+                <div class="message user-message">{{ message.user }}</div>
+                <div class="message bot-message">{{ message.bot }}</div>
+            {% endfor %}
+        </div>
+        <form action="chat" method="post" enctype="application/x-www-form-urlencoded">
+            {% csrf_token %}
+            <div id="file-module-0">
+                <label>chatgtp에게 요청하기기기 </label>
+                <textarea id="question" name="question"></textarea>
+            </div>
+            <div><button id="text-button" type="submit">질문</button></div>
+        </form>
+    </div>
+</body>
+</form> 
+
+ {% endcomment %}

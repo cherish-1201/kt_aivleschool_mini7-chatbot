@@ -1,0 +1,103 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+body, h1, h2, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+.logo{
+    font-family: "Quicksand", sans-serif;
+}
+body {
+    line-height: 1.6;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.navbar {
+    background-color: #A8C0D6;
+    color: white;
+    padding: 10px 0;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.navbar .logo {
+    float: left;
+}
+
+.navbar nav {
+    float: right;
+}
+
+.navbar ul {
+    display: flex;
+    padding-top: 15px;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    font-size: 16px;
+    font-family: "Quicksand", sans-serif;
+}
+.text-button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: 16px;
+    font-family: "Quicksand", sans-serif; 
+}
+.navbar:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.home {
+    min-height: 100%; 
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+
+/* Content */
+/* .content {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    margin: 10px;
+} */
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 10px;
+    margin: 10px;
+    /* position: absolute;
+    bottom: 0; */
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
+}

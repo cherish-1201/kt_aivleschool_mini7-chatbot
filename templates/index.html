@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}  
+    Homepage
+{% endblock %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% if user.is_authenticated %}
+    <div id="card-container">
+        <div class="card-button">
+            <a href="/chatgpt/chating">
+                <div class="card-content">QA_chatbot
+                <i class="fa-solid fa-comment-dots"></i>
+                </div>
+            </a>
+        </div>
+        <div class="card-button">
+            <a href="{% url 'chatgpt:chat_history' %}">
+                <div class="card-content">History
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                {% comment %} <i class="fa-solid fa-database"></i> DB모양 {% endcomment %}
+                </div>
+            </a>
+        </div>
+    </div>
+    {% else %}
+    <div id="card-container">
+        <div class="card-button">
+            <a href="/chatgpt/login">
+                <div class="card-content">Login
+                </div>
+            </a>
+        </div>
+        <div class="card-button">
+            <a href="/chatgpt/signup">
+                <div class="card-content">Signup
+                {% comment %} <i class="fa-solid fa-database"></i> DB모양 {% endcomment %}
+                </div>
+            </a>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
+{% block footer %}
+    <div class='video'>
+        <h2>KT Aivle 관련 영상</h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- 반복되는 슬라이드 -->
+                <div class="swiper-slide thumbnail" onclick="openVideo('https://www.youtube.com/watch?v=066tIUJLQio&list=PL_WCuvyChN3giYr6Xa2gWMOvRjDUrfb0a')">
+                    <img src="https://img.youtube.com/vi/066tIUJLQio/mqdefault.jpg" alt="Video Thumbnail 1">
+                </div>
+                <div class="swiper-slide thumbnail" onclick="openVideo('https://www.youtube.com/watch?v=qtsCkPVZGgA&list=PL_WCuvyChN3giYr6Xa2gWMOvRjDUrfb0a&index=3')">
+                    <img src="https://img.youtube.com/vi/qtsCkPVZGgA/mqdefault.jpg" alt="Video Thumbnail 2">
+                </div>
+                <div class="swiper-slide thumbnail" onclick="openVideo('https://www.youtube.com/watch?v=CLKnV9BLPGY&list=PL_WCuvyChN3giYr6Xa2gWMOvRjDUrfb0a&index=8')">
+                    <img src="https://img.youtube.com/vi/CLKnV9BLPGY/mqdefault.jpg" alt="Video Thumbnail 3">
+                </div>
+                <div class="swiper-slide thumbnail" onclick="openVideo('https://www.youtube.com/watch?v=ln1wLStf0mU')">
+                    <img src="https://img.youtube.com/vi/ln1wLStf0mU/mqdefault.jpg" alt="Video Thumbnail 4">
+                </div>
+                <div class="swiper-slide thumbnail" onclick="openVideo('https://www.youtube.com/watch?v=-rBPbupuEQY')">
+                    <img src="https://img.youtube.com/vi/-rBPbupuEQY/mqdefault.jpg" alt="Video Thumbnail 5">
+                </div>
+                <!-- 필요한 만큼 추가 -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
